@@ -1,0 +1,20 @@
+version: '3.5'
+services:
+  xo:
+    image: ronivay/xen-orchestra
+    deploy:
+      mode: replicated
+      replicas: 5
+    ports:
+      - "80:80"
+    volumes:
+      - xen_redis:/var/lib/redis
+      - xen_xo-server:/var/lib/xo-server
+
+volumes:
+  xen_xo-server:
+    external: true
+    name: xen_xo-server
+  xen_redis:
+    external: true
+    name: xen_redis
