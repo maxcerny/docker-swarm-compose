@@ -13,8 +13,12 @@ services:
 
 volumes:
   xen_xo-server:
-    external: true
-    name: xen_xo-server
+    driver_opts:
+      type: "nfs"
+      o: "addr=192.168.240.249,nfsvers=3"
+      device: ":/mnt/main/docker/xen/xo-server"
   xen_redis:
-    external: true
-    name: xen_redis
+    driver_opts:
+      type: "nfs"
+      o: "addr=192.168.240.249,nfsvers=3"
+      device: ":/mnt/main/docker/xen/redis"
